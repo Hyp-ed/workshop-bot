@@ -11,7 +11,7 @@ function execute(command, assert) {
 var stages = {
     '0': {
         script: 'controllers/scripts/stage1.sh',
-        assert: /foo/,
+        assert: /success/,
         readme: 'controllers/scripts/readme1.md',
         commit_message: 'Update README.md'
     },
