@@ -7,5 +7,7 @@
 api endpoints
 
 `POST` - `/bot` this is listening for webhooks (add it to the repository)
+
 `POST` - `/team/new` creates new team required `team_name` and `repository_url` parameters in body as JSON
+
 `GET` - `/team` lists all existing teams
