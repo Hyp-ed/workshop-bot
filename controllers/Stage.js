@@ -10,12 +10,16 @@ function execute(command, assert) {
 
 var stages = {
     '0': {
-        script: 'stage1.sh',
-        assert: /foo/
+        script: 'controllers/scripts/stage1.sh',
+        assert: /foo/,
+        readme: 'controllers/scripts/readme1.md',
+        commit_message: 'Update README.md'
     },
     '1': {
-        script: 'stage2.sh',
-        assert: /bar/
+        script: 'controllers/scripts/stage2.sh',
+        assert: /bar/,
+        readme: 'controllers/scripts/readme2.md',
+        commit_message: 'Update README.md'
     }
 };
 
@@ -23,8 +27,11 @@ module.exports = {
     async runTests(team) {
         try {
             const stage = stages[team.stage];
-            console.log(stage)
-            await execute(`cp controllers/scripts/${stage.script} repositories/${team.repository_id}/test.sh && cd repositories/${team.repository_id} && ./test.sh && rm test.sh`, stage.assert);
+            console.log(stage);
+            await join(exec(`cd repositories/${team.repository_id} && git pull origin master`));
+            await execute(`cp ${stage.script} repositories/${team.repository_id}/test.sh && cd repositories/${team.repository_id} && ./test.sh && rm test.sh`, stage.assert);
+            await join(exec(`rm repositories/${team.repository_id}/README.md && cp ${stage.readme} repositories/${team.repository_id}/README.md`));
+            await join(exec(`cd repositories/${team.repository_id} && git add -A && git commit -m "${stage.commit_message}"`));
             return true;
         } catch(e) {
             console.log(e);

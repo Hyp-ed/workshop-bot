@@ -3,7 +3,6 @@ const asyncMiddleware = require('../../utils');
 const router = express.Router();
 const Team = require('../../models/Team');
 const Git = require('../../controllers/Git');
-const Stage = require('../../controllers/Stage');
 
 router.get('/', asyncMiddleware(async (req, res, next) => {
     const response = {
