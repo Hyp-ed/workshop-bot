@@ -13,16 +13,35 @@ module.exports = {
     async save(team_name, repository_url) {
         const repository_id = uuid();
         const stage = 0;
-        const insert_id = await knex(table).insert({ repository_id, repository_url, team_name, stage });
+        const insert_id = await knex(table).insert({ repository_id, repository_url, team_name, stage, console: 'repository saved' });
         if (insert_id.length > 0) {
             return this.get(repository_url);
         }
     },
-    async updateStage(repository_url) {
+    async updateStage(repository_url, custom_stage = null) {
         const team = await this.get(repository_url);
         const stage = team[0].stage + 1;
-        console.log(stage)
-        return knex(table).update({ stage });
+        
+        if (custom_stage !== null) {
+            stage = custom_stage;
+        }
+        
+        return knex(table).where({ repository_url }).update({ stage });
+    },
+    getConsole(repository_url) {
+        return knex.select('console').where({ repository_url }).from(table);
+    },
+    clearConsole(repository_url) {
+        return knex(table).where({ repository_url }).update({ 'console': '' });
+    },
+    async appendConsole(repository_url, message) {
+        try {
+            const current = await this.getConsole(repository_url);
+            const cons = 'Output:\n' + message + '\n=========================================================\n' + current[0].console;
+            return knex(table).where({ repository_url }).update({ 'console': cons });
+        } catch(e) {
+            console.log(e);
+        }
     },
     delete(repository_url) {
         return knex(table).where({ repository_url }).del();

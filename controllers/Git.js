@@ -19,6 +19,7 @@ module.exports = {
             await execute(`cd repositories && cd ${repository_id} && git status`);
             return true;
         } catch(e) {
+            
             return false;
         }
     },

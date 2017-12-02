@@ -5,16 +5,15 @@ const Stage = require('../../controllers/Stage');
 const Team = require('../../models/Team');
 
 router.post('/', asyncMiddleware(async (req, res, next) => {
-    const repository_url = req.body.repository.clone_url;
+    const repository_url = req.body.repository.ssh_url;
     const team = await Team.get(repository_url);
     const correct = await Stage.runTests(team[0]);
     
     if (correct) {
         const rowsUpdated = await Team.updateStage(repository_url);
-        console.log("PASSED", rowsUpdated);
+        console.log("PASSED", repository_url, team.team_name);
     } else {
-        // await Team.setError(repository_url);
-        console.log("FAILED")
+        console.log("FAILED", repository_url, team.team_name);
     }
     
     res.send({ success: true });

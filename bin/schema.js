@@ -6,6 +6,7 @@ knex.schema.createTable('teams', table => {
     table.string('team_name');
     table.string('repository_id');
     table.integer('stage');
+    table.string('console');
 }).then(() => {
     console.log('Created TEAMS table');
     knex.destroy(() => {
