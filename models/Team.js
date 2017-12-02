@@ -1,6 +1,7 @@
 const uuid = require('uuid4');
 const knex = require('knex')(require('../config.js'));
 const table = 'teams';
+const initial_stage = require('../configs/stageConfig.js').initialStage;
 
 module.exports = {
     get(repository_url = null) {
@@ -12,7 +13,7 @@ module.exports = {
     },
     async save(team_name, repository_url) {
         const repository_id = uuid();
-        const stage = 0;
+        const stage = initial_stage;
         const insert_id = await knex(table).insert({ repository_id, repository_url, team_name, stage, console: 'repository saved' });
         if (insert_id.length > 0) {
             return this.get(repository_url);
