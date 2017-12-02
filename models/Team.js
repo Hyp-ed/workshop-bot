@@ -14,7 +14,7 @@ module.exports = {
     async save(team_name, repository_url) {
         const repository_id = uuid();
         const stage = initial_stage;
-        const insert_id = await knex(table).insert({ repository_id, repository_url, team_name, stage, console: 'repository saved' });
+        const insert_id = await knex(table).insert({ repository_id, repository_url, team_name, stage, console: 'repository saved', updated: Math.floor(Date.now()/1000).toString() });
         if (insert_id.length > 0) {
             return this.get(repository_url);
         }
@@ -31,8 +31,8 @@ module.exports = {
     async appendConsole(repository_url, message) {
         try {
             const current = await this.getConsole(repository_url);
-            const cons = 'Output:\n' + message + '\n=========================================================\n' + current[0].console;
-            return knex(table).where({ repository_url }).update({ 'console': cons });
+            const cons = message + '<hr/>' + current[0].console;
+            return knex(table).where({ repository_url }).update({ 'console': cons, updated: Math.floor(Date.now()/1000).toString() });
         } catch(e) {
             console.log(e);
         }
