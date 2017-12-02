@@ -42,7 +42,7 @@ module.exports = {
                 console.log("copy files", team.team_name)
                 
                 await join(exec(`rm repositories/${team.repository_id}/README.md && cp ${stage.readme} repositories/${team.repository_id}/README.md`));
-                console.log("replace README", team.team_name)
+                console.log("replace README", team.team_name);
                 
                 await join(exec(`cd repositories/${team.repository_id} && git add -A && git commit -m "${stage.commit_message}" && git push`));
                 console.log("add, commit & push", team.team_name);
