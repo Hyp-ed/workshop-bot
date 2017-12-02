@@ -18,7 +18,7 @@
         ```c++
         double get_temperature();
         ```
-    * Open `pod.cpp`, locate place for TASKS 3&4 and copy-paste the following code there (you can change the 0 there if you want a more comfortable temperature)
+    * Open `pod.cpp`, locate place for TASKS 3&4 and copy-paste the following code there. Change the 0 to something else.
         ```c++
         double Pod::get_temperature()
         {
@@ -31,7 +31,7 @@
         ```c++
         double get_pressure();
         ```
-    * Open `pod.cpp`, locate place for TASKS 3&4, copy the following code and paste it below the function from previous task (you can change the 0 there if you want a more comfortable pressure)
+    * Open `pod.cpp`, locate place for TASKS 3&4, copy the following code and paste it below the function from previous task. Change the 0 to something else.
         ```c++
         double Pod::get_pressure()
         {
@@ -55,7 +55,7 @@
           return 0;
         }
         ```
-    * Open `Makefile`, locate place for TASK 4 and uncomment the code there to get something like
+    * Open `Makefile`, locate place for TASK 5 and uncomment the code there to get something like
         ```mk
         main : main.o pod.o bms.o navigation.o accelerometer.o
 	        $(CC) $(OBJS) $(LFLAGS) main.o -o main
@@ -97,7 +97,7 @@
         
         /// END OF TASKS 9AB ///////////////////////////////////////////////////////////
         ```
-    * Open `Makefile`, locate place for TASK 5 and uncomment the code there to get something like
+    * Open `Makefile`, locate place for TASK 6 and uncomment the code there to get something like
         ```mk
         bms.o : bms.cpp bms.h
 	        $(CC) $(CFLAGS) bms.cpp
@@ -118,14 +118,14 @@
             ```
 8. Person A `git push`es first
     - Person A - `navigation.cpp` - Implement calculation of velocity from acceleration
-        * Open `navigation.cpp`, locate the place for your part of TASK 7 (inside `get_velocity()` function) and copy the following code there
+        * Open `navigation.cpp`, locate the place for your part of TASK 8 (inside `get_velocity()` function) and copy the following code there
             ```c++
             double a = this->get_acceleration();
             this->velocity += a*DT; //integrate
             return this->velocity;
             ```
     - Person B - `navigation.cpp` - Implement calculation of position from velocity
-        * Open `navigation.cpp`, locate the place for your part of TASK 7 (inside `get_position()` function) and copy the following code there
+        * Open `navigation.cpp`, locate the place for your part of TASK 8 (inside `get_position()` function) and copy the following code there
             ```c++
             double v = this->get_velocity();
             this->position += v*DT; //integrate
@@ -138,7 +138,7 @@
             ```c++
             double get_voltage();
             ```
-        * Open `bms.cpp`, locate place for TASK 9 and copy the following code there (you can change the number)
+        * Open `bms.cpp`, locate place for TASK 9 and copy the following code there. Change the 0 to something else.
             ```c++
             double BatteryManagementSystem::get_voltage()
             {
@@ -153,7 +153,7 @@
             ```c++
             double get_current();
             ```
-        * Open `bms.cpp`, locate place for TASK 9 and copy the following code there (you can change the number)
+        * Open `bms.cpp`, locate place for TASK 9 and copy the following code there. Change the 0 to something else.
             ```c++
             double BatteryManagementSystem::get_current()
             {

@@ -18,7 +18,7 @@
         ```c++
         double get_temperature();
         ```
-    * Open `pod.cpp`, locate place for TASKS 3&4 and copy-paste the following code there (you can change the 0 there if you want a more comfortable temperature)
+    * Open `pod.cpp`, locate place for TASKS 3&4 and copy-paste the following code there. Change the 0 to something else.
         ```c++
         double Pod::get_temperature()
         {
@@ -31,7 +31,7 @@
         ```c++
         double get_pressure();
         ```
-    * Open `pod.cpp`, locate place for TASKS 3&4, copy the following code and paste it below the function from previous task (you can change the 0 there if you want a more comfortable pressure)
+    * Open `pod.cpp`, locate place for TASKS 3&4, copy the following code and paste it below the function from previous task. Change the 0 to something else.
         ```c++
         double Pod::get_pressure()
         {
@@ -55,7 +55,7 @@
           return 0;
         }
         ```
-    * Open `Makefile`, locate place for TASK 4 and uncomment the code there to get something like
+    * Open `Makefile`, locate place for TASK 5 and uncomment the code there to get something like
         ```mk
         main : main.o pod.o bms.o navigation.o accelerometer.o
 	        $(CC) $(OBJS) $(LFLAGS) main.o -o main

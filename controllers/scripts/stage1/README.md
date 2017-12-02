@@ -1,4 +1,4 @@
-## Git Exercise
+# Git Exercise
 
 1. Each person in the pair needs to `git clone` this repo
 2. Decide, who is Person A and who is Person B
