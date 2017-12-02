@@ -19,14 +19,7 @@ module.exports = {
             return this.get(repository_url);
         }
     },
-    async updateStage(repository_url, custom_stage = null) {
-        const team = await this.get(repository_url);
-        const stage = team[0].stage + 1;
-        
-        if (custom_stage !== null) {
-            stage = custom_stage;
-        }
-        
+    async updateStage(repository_url, stage) {
         return knex(table).where({ repository_url }).update({ stage });
     },
     getConsole(repository_url) {

@@ -1,5 +1,5 @@
 module.exports = {
-    gitBotUsername: 'hackal',
+    gitBotUsername: 'BotEmil',
     initialStage: '0%',
     stages: {
         '0%': {
@@ -50,7 +50,7 @@ module.exports = {
         '50%': {
             preScriptFiles: ['controllers/scripts/stage6/stage.mk'],
             script: 'controllers/scripts/stage6/test.sh',
-            assert: /.*/,
+            assert: /^$/,
             readme: 'controllers/scripts/stage6/README.md',
             files: [],
             commit_message: 'Update README.md & exercise',

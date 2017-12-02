@@ -13,6 +13,7 @@ router.post('/', asyncMiddleware(async (req, res, next) => {
         const repository_url = req.body.repository.ssh_url;
         const team = await Team.get(repository_url);
         const test = await Stage.runTests(team[0]);
+        console.log(test)
         
         if (test.success) {
             await Team.updateStage(repository_url, test.next_stage);
