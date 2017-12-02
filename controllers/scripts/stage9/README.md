@@ -1,3 +1,8 @@
+# Thank you, you have completed all the exercises.
+
+Please change this text and leave your feedback on the workshop here.
+
+
 # Git Exercise
 
 1. Each person in the pair needs to `git clone` this repo
